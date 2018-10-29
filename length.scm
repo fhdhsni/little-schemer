@@ -41,32 +41,6 @@ exec csi -s $0 "$@"
        (else (add1 (g (cdr l)))))))
   eternity))
 
-(define Y
-  (lambda (le)
-    ((lambda (f) (f f))
-     (lambda (f)
-       (le (lambda (x) ((f f) x)))))))
-
-((Y
-  (lambda (length)
-    (lambda (l)
-      (cond
-       ((null? l) 0)
-       (else (add1 (length (cdr l)))))))) '(o b c))
-
-
-
-((lambda (mk-length)
-   (mk-length mk-length))
- (lambda (mk-length)
-   ((lambda (length)
-      (lambda (l)
-        (cond
-         ((null? l) 0)
-         (else (addl (length (cdr l)))))))
-    (mk-length mk-length))))
-
-
 ((lambda (length)
    (lambda (l)
      (cond
@@ -83,3 +57,17 @@ exec csi -s $0 "$@"
         ((null? l) 0)
         (else (add1 (length (cdr l)))))))
    eternity)))
+
+
+(define Y
+  (lambda (le)
+    ((lambda (f) (f f))
+     (lambda (f)
+       (le (lambda (x) ((f f) x)))))))
+
+((Y
+  (lambda (length)
+    (lambda (l)
+      (cond
+       ((null? l) 0)
+       (else (add1 (length (cdr l)))))))) '(o b c))
